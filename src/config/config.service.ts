@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as Joi from 'joi';
@@ -58,7 +58,8 @@ export class ConfigService {
       TEST_EMAIL_TO: Joi.string(),
     });
 
-    const { error, value: validatedEnvConfig } = Joi.validate(envConfig, envVarsSchema);
+    // const { error, value: validatedEnvConfig } = Joi.validate(envConfig, envVarsSchema);
+    const { error, value: validatedEnvConfig } = envVarsSchema.validate(envConfig);
     if (error) {
       throw new Error(`Config validation error in your env file: ${error.message}`);
     }
@@ -105,10 +106,12 @@ export class ConfigService {
   }
 
   get mongoUser(): string | undefined {
+    Logger.debug(this.envConfig.MONGO_USER)
     return this.envConfig.MONGO_USER;
   }
 
   get mongoPassword(): string | undefined {
+    Logger.debug(this.envConfig.MONGO_PASSWORD)
     return this.envConfig.MONGO_PASSWORD;
   }
 
