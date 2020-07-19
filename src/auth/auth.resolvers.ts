@@ -8,7 +8,7 @@ import { UserDocument } from '../users/schemas/user.schema';
 
 @Resolver('Auth')
 export class AuthResolver {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   @Query('login')
   async login(@Args('user') user: LoginUserInput): Promise<LoginResult> {

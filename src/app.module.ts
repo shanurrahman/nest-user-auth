@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { join } from 'path';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
+import { LeadModule } from './lead/lead.module';
 
 @Module({
   imports: [
@@ -41,6 +42,8 @@ import { ConfigService } from './config/config.service';
     UsersModule,
     AuthModule,
     ConfigModule,
+    LeadModule,
   ],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule { }

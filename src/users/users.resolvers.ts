@@ -11,7 +11,7 @@ import { AdminAllowedArgs } from '../decorators/admin-allowed-args';
 
 @Resolver('User')
 export class UserResolver {
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService) { }
 
   @Query('users')
   @UseGuards(JwtAuthGuard, AdminGuard)

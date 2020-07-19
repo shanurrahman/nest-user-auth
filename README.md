@@ -337,3 +337,32 @@ mutation {
   }
 }
 ```
+
+tests
+
+Creating a user
+
+````
+mutation {
+  createUser(createUserInput: {
+    username: "shanurrahman1234",
+    email: "shanur@marrsplay.co",
+    password: "somepassword"
+  }){
+    username
+  }
+}```
+````
+
+Login with
+
+````query {
+  login(user: {
+    username: "shanurrahman1234",
+    email: "shanur@marrsplay.co",
+    password: "somepassword"
+  }) {
+    token
+  }
+}```
+````
